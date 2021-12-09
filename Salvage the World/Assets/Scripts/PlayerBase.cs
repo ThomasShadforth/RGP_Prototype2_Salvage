@@ -28,7 +28,8 @@ public class PlayerBase : MonoBehaviour
     [SerializeField]
     float playerStamina;
     public float staminaRate;
-    
+
+    public Salvage_Object objectInRange;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +53,8 @@ public class PlayerBase : MonoBehaviour
 
     void FixedUpdate()
     {
-        moveInput.x = Input.GetAxis("Horizontal");
-        moveInput.y = Input.GetAxis("Vertical");
+        moveInput.x = Input.GetAxisRaw("Horizontal");
+        moveInput.y = Input.GetAxisRaw("Vertical");
 
         if (isSprinting)
         {
@@ -76,7 +77,13 @@ public class PlayerBase : MonoBehaviour
         checkForSprint();
         if(isSprinting)
         {
-            playerStamina -= 1 * staminaRate * Time.deltaTime;
+            playerStamina -= 1 * staminaRate * GamePause.deltaTime;
+        }
+        checkForSalvageInput();
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameManager.instance.itemManagerDB.removeItem("Durable Wood", 2);
         }
     }
 
@@ -98,6 +105,25 @@ public class PlayerBase : MonoBehaviour
         else
         {
             isSprinting = false;
+        }
+    }
+
+    void checkForSalvageInput()
+    {
+        if (objectInRange && !objectInRange.hasBeenSalvaged)
+        {
+            if (Input.GetButton("Fire2"))
+            {
+                objectInRange.isTimerActive = true;
+            }
+
+            if (objectInRange.isTimerActive)
+            {
+                if(Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+                {
+                    objectInRange.resetTimer();
+                }
+            }
         }
     }
 }

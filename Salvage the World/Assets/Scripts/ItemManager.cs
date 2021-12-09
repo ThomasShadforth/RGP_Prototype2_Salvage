@@ -9,6 +9,8 @@ public class ItemManager : MonoBehaviour
 
     public string[] items;
     public int[] itemNumbers;
+
+    public CraftedItem[] itemDatabase;
     //reserve for object array
     //public gameObject[] inGameObjects
 
@@ -47,11 +49,18 @@ public class ItemManager : MonoBehaviour
                         }
                     }
                 }
+                else
+                {
+                    itemNumbers[i] += numToAdd;
+                    break;
+                }
                 //itemNumbers[i] += itemNum;
-            } else if(items[i] == null)
+            } else if(items[i] == "")
             {
+                
                 items[i] = itemName;
                 itemNumbers[i] += numToAdd;
+                break;
             }
         }
     }
@@ -65,7 +74,7 @@ public class ItemManager : MonoBehaviour
                 itemNumbers[i] -= numToRemove;
                 if(itemNumbers[i] <= 0)
                 {
-                    items[i] = null;
+                    items[i] = "";
                     //Rearrange inventory (Find a method to shift items up)
                 }
             }

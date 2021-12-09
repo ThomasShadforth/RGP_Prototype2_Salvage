@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public ItemManager itemManagerDB;
     void Start()
     {
         if(instance != null)
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        itemManagerDB = GetComponent<ItemManager>();
     }
 
     // Update is called once per frame
