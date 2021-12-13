@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class CraftedItem : MonoBehaviour
 {
+    public string ItemName;
+
     public bool isCrude;
     public bool isPassable;
     public bool isDurable;
 
     public int maxDurability;
-    int durability;
+    public int durability;
 
     public CraftingRequirements[] requiredMaterials;
     void Start()

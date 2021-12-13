@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8654213273500114733
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8654213273500114736}
+  - component: {fileID: 8654213273500114739}
+  - component: {fileID: 8654213273500114738}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8654213273500114736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654213273500114733}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8654213273500114739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654213273500114733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb71268798d6eb4c983f9fda5c66bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemManagerDB: {fileID: 0}
+--- !u!114 &8654213273500114738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654213273500114733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e9db34af70e4346a1034d804cf5cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - Crude Wood
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  itemNumbers: 0400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  itemHotbar: []
+  itemDatabase:
+  - {fileID: 6789834080865988543, guid: c331ffa1c76d44d418c20e29936015d4, type: 3}
+  - {fileID: 177517614116762776, guid: e3176172b15590b4b9645092d52b89af, type: 3}
+  - {fileID: 1008994959063126267, guid: 1cfd482fb5926b041a565cf563c1938b, type: 3}
+  materialDatabase:
+  - Crude Wood
+  - Crude Scrap
+  - Crude Plastic
+  - Passable Wood
+  - Passable Scrap
+  - Passable Plastic
+  - Durable Wood
+  - Durable Scrap
+  - Durable Plastic
+  materialDescriptions:
+  - A splinter of wood that is almost unusable, but can still be repurposed
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 

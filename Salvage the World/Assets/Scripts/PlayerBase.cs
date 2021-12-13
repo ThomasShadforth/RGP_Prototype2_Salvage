@@ -81,10 +81,14 @@ public class PlayerBase : MonoBehaviour
         }
         checkForSalvageInput();
 
-        if (Input.GetKeyDown(KeyCode.P))
+        /*if (Input.GetKeyDown(KeyCode.P))
         {
-            GameManager.instance.itemManagerDB.removeItem("Durable Wood", 2);
+            CraftingMenu.instance.selectItemToCraft(0);
         }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            CraftingMenu.instance.craft();
+        }*/
     }
 
     void LateUpdate()
