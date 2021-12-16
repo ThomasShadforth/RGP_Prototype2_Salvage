@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Salvage_Object : MonoBehaviour
 {
     public string materialType;
@@ -13,6 +13,10 @@ public class Salvage_Object : MonoBehaviour
 
     public float timerVal;
     float timer;
+
+    public Text timerText;
+    public Image timerBar;
+
     void Start()
     {
         timer = timerVal;
@@ -27,6 +31,7 @@ public class Salvage_Object : MonoBehaviour
             {
                 //Test debug for timer when object has been set
                 timer -= GamePause.deltaTime;
+                timerBar.fillAmount = timer / timerVal;
                 Debug.Log(timer);
             }
             if(timer <= 0)
@@ -37,6 +42,8 @@ public class Salvage_Object : MonoBehaviour
                 salvage();
             }
         }
+
+        checkTimerStatus();
     }
 
     public void salvage()
@@ -50,13 +57,15 @@ public class Salvage_Object : MonoBehaviour
         //Resets the salvage timer if the player moves while it is active
         isTimerActive = false;
         timer = timerVal;
+        timerBar.fillAmount = timer / timerVal;
+        timerBar.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<PlayerBase>())
         {
-            Debug.Log("PLAYER ENTERED");
+            
             PlayerBase.instance.objectInRange = this;
         }
     }
@@ -65,8 +74,19 @@ public class Salvage_Object : MonoBehaviour
     {
         if (other.GetComponent<PlayerBase>())
         {
-            Debug.Log("PLAYER LEFT");
+            
             PlayerBase.instance.objectInRange = null;
+        }
+    }
+    void checkTimerStatus()
+    {
+        if (isTimerActive)
+        {
+            timerBar.gameObject.SetActive(true);
+        }
+        else
+        {
+            timerBar.gameObject.SetActive(false);
         }
     }
 }

@@ -11,10 +11,16 @@ public class MenuSystem : MonoBehaviour
     public GameObject craftingWindow, inventoryWindow;
     public GameObject[] menuWindows;
 
+    [Header("Button Arrays")]
     public InventoryButtons[] inventoryButtons;
     public InventoryButtons[] craftingMenuButtons;
+    public ItemHotbarButton[] hotbarButtons;
 
-    public Text selectedCraftItem, craftItemDescription, craftItemDur, craftItemMaterials;
+    [Header("Crafting Menu UI")]
+    public Text selectedCraftItem, craftItemDescription, craftItemDur, craftItemMaterials, craftingButtonText;
+    public Button craftingButton;
+
+    [Header("Inventory UI")]
     public Text inventoryItemName, inventoryItemDescription, inventoryButtonText;
     string activeItem;
     void Start()
@@ -27,6 +33,13 @@ public class MenuSystem : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+
+        for(int i = 0; i < hotbarButtons.Length; i++)
+        {
+            hotbarButtons[i].slotValue = i;
+
+            
         }
     }
 

@@ -47,7 +47,12 @@ MonoBehaviour:
   isCrude: 1
   isPassable: 0
   isDurable: 0
-  maxDurability: 0
+  isAxe: 0
+  isPickaxe: 1
+  isShovel: 0
+  maxDurability: 10
+  durability: 0
+  efficiency: 1
   requiredMaterials:
   - RequiredMaterialName: Crude Wood
     RequiredMaterialNumber: 3

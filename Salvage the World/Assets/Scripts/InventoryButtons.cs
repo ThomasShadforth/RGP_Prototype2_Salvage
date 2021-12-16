@@ -27,6 +27,7 @@ public class InventoryButtons : MonoBehaviour
             if (MenuSystem.instance.craftingWindow.activeInHierarchy)
             {
                 CraftingMenu.instance.selectItemToCraft(buttonValue);
+                CraftingMenu.instance.CheckCraft();
             }
             else if (MenuSystem.instance.inventoryWindow.activeInHierarchy)
             {

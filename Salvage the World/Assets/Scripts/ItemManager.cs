@@ -15,13 +15,16 @@ public class ItemManager : MonoBehaviour
     //Used to store the crafted items the player can use to explore the world
     [Header("Item Hotbar")]
     public CraftedItem[] itemHotbar;
+    public CraftedItem selectedItem;
 
     //Stores a list of the items the player can make
     [Header("Item Databases")]
     public CraftedItem[] itemDatabase;
     public string[] materialDatabase;
     public string[] materialDescriptions;
-    
+
+    [Header("TEST: Mouse Scroll Val")]
+    public int currentItemIndex;
 
     void Start()
     {
@@ -31,7 +34,7 @@ public class ItemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        checkWheelScroll();
     }
 
     public void addItem(string itemName, int numToAdd)
@@ -92,16 +95,7 @@ public class ItemManager : MonoBehaviour
     }
 
     //Method that is executed after successfully crafting an item
-    public void addTool(CraftedItem toolToAdd)
-    {
-        for(int i = 0; i < itemHotbar.Length; i++)
-        {
-            if(itemHotbar[i] == null)
-            {
-                itemHotbar[i] = toolToAdd;
-            }
-        }
-    }
+    
     //After an item reaches 0 or negative durability, destroy it
     public void destroyTool(CraftedItem toolToDestroy)
     {
@@ -141,5 +135,75 @@ public class ItemManager : MonoBehaviour
             }
         }
         
+    }
+
+    public void createCraftedItem(string nameOfItem)
+    {
+        for(int i = 0; i < itemDatabase.Length; i++)
+        {
+            if(itemDatabase[i].ItemName == nameOfItem)
+            {
+                CraftedItem itemToCreate = itemDatabase[i];
+                checkItemHotbar(false, itemToCreate);
+            }
+        }
+    }
+
+    public void checkItemHotbar(bool willDestroy, CraftedItem item)
+    {
+        if (!willDestroy)
+        {
+            for(int i = 0; i < itemHotbar.Length; i++)
+            {
+                if(itemHotbar[i] != null)
+                {
+                    continue;
+                }
+                else
+                {
+                    itemHotbar[i] = Instantiate(item);
+                    selectedItem = itemHotbar[i];
+                    currentItemIndex = i;
+                    break;
+                }
+            }
+        }
+        else
+        {
+
+        }
+    }
+
+    public void checkWheelScroll()
+    {
+        if (Input.GetAxisRaw("Mouse ScrollWheel") != 0)
+        {
+
+            if(Input.GetAxisRaw("Mouse ScrollWheel") > 0)
+            {
+                
+                currentItemIndex += 1;
+                if(currentItemIndex > 9)
+                {
+                    currentItemIndex = 0;
+                }
+            } else if (Input.GetAxisRaw("Mouse ScrollWheel") < 0)
+            {
+                
+                currentItemIndex -= 1;
+                if(currentItemIndex < 0)
+                {
+                    currentItemIndex = 9;
+                }
+            }
+            if (itemHotbar[currentItemIndex] != null)
+            {
+                selectedItem = itemHotbar[currentItemIndex];
+            }
+            else
+            {
+                selectedItem = null;
+            }
+        }
     }
 }

@@ -30,13 +30,16 @@ public class PlayerBase : MonoBehaviour
     public float staminaRate;
 
     public Salvage_Object objectInRange;
+    [SerializeField]
+    public Obstacle obstacleInRange;
 
+    public string areaTransitionName;
     // Start is called before the first frame update
     void Start()
     {
         if(instance != null)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -80,7 +83,7 @@ public class PlayerBase : MonoBehaviour
             playerStamina -= 1 * staminaRate * GamePause.deltaTime;
         }
         checkForSalvageInput();
-
+        checkForObstacleInteract();
         /*if (Input.GetKeyDown(KeyCode.P))
         {
             CraftingMenu.instance.selectItemToCraft(0);
@@ -116,7 +119,7 @@ public class PlayerBase : MonoBehaviour
     {
         if (objectInRange && !objectInRange.hasBeenSalvaged)
         {
-            if (Input.GetButton("Fire2"))
+            if (Input.GetButtonDown("Fire2"))
             {
                 objectInRange.isTimerActive = true;
             }
@@ -127,6 +130,60 @@ public class PlayerBase : MonoBehaviour
                 {
                     objectInRange.resetTimer();
                 }
+            }
+        }
+    }
+    void checkForObstacleInteract()
+    {
+        bool canDamage = false;
+        if (obstacleInRange && GameManager.instance.itemManagerDB.selectedItem != null)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (GameManager.instance.itemManagerDB.selectedItem.isAxe)
+                {
+                    if (obstacleInRange.needsAxe)
+                    {
+                        canDamage = true;
+                    }
+                    else
+                    {
+                        canDamage = false;
+                    }
+                } else if (GameManager.instance.itemManagerDB.selectedItem.isPickaxe)
+                {
+                    if (obstacleInRange.needsPickaxe)
+                    {
+                        canDamage = true;
+                    }
+                    else
+                    {
+                        canDamage = false;
+                    }
+                } else if (GameManager.instance.itemManagerDB.selectedItem.isShovel)
+                {
+                    if (obstacleInRange.needsShovel)
+                    {
+                        canDamage = true;
+                    }
+                    else
+                    {
+                        canDamage = false;
+                    }
+                }
+
+                if (canDamage)
+                {
+                    obstacleInRange.reduceHitCount(GameManager.instance.itemManagerDB.selectedItem.efficiency);
+                }
+                GameManager.instance.itemManagerDB.selectedItem.durability -= 1;
+            }
+        }
+        else
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Debug.Log("You can't break this with your bare hands! You need to craft a tool!");
             }
         }
     }
