@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: f5eef93a4b5055840b4b5b77a92bd477
+  - enabled: 1
     path: Assets/Scenes/StartSalvageSite.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/FirstCave.unity
     guid: 6ea78e7fe39bf0a46b74e7b915841011
+  - enabled: 1
+    path: Assets/Scenes/GiantCave_1.unity
+    guid: b41b98fd16c50614a94051195a70078f
+  - enabled: 1
+    path: Assets/Scenes/GiantCave_1_Lower.unity
+    guid: e0e70b14afd72474c9224465166b3709
   m_configObjects: {}
