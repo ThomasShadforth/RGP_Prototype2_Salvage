@@ -117,4 +117,9 @@ public class CraftingMenu : MonoBehaviour
         selectItemToCraft(currentIndex);
         CheckCraft();
     }
+
+    public void setDefaultCraftingItem()
+    {
+        selectItemToCraft(0);
+    }
 }

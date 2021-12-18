@@ -53,9 +53,13 @@ public class PlayerBase : MonoBehaviour
         playerStamina = staminaMax;
         moveInput = Vector3.zero;
     }
-
+    
     void FixedUpdate()
     {
+        if (GamePause.GamePaused)
+        {
+            return;
+        }
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
@@ -77,6 +81,10 @@ public class PlayerBase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GamePause.GamePaused)
+        {
+            return;
+        }
         checkForSprint();
         if(isSprinting)
         {
@@ -84,18 +92,15 @@ public class PlayerBase : MonoBehaviour
         }
         checkForSalvageInput();
         checkForObstacleInteract();
-        /*if (Input.GetKeyDown(KeyCode.P))
-        {
-            CraftingMenu.instance.selectItemToCraft(0);
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            CraftingMenu.instance.craft();
-        }*/
+        
     }
 
     void LateUpdate()
     {
+        if (GamePause.GamePaused)
+        {
+            return;
+        }
         //rb.MovePosition(transform.position + moveInput * speedMult * Time.deltaTime);
 
         rb.velocity = new Vector2(moveInput.x * speedMult, moveInput.y * speedMult);

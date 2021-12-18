@@ -10,6 +10,7 @@ public class MenuSystem : MonoBehaviour
     public GameObject menuPanel;
     public GameObject craftingWindow, inventoryWindow;
     public GameObject[] menuWindows;
+    public GameObject playerHotbarUI;
 
     [Header("Button Arrays")]
     public InventoryButtons[] inventoryButtons;
@@ -59,6 +60,7 @@ public class MenuSystem : MonoBehaviour
             menuPanel.SetActive(true);
             GamePause.GamePaused = true;
             menuWindows[0].SetActive(true);
+            playerHotbarUI.SetActive(false);
         }
         else
         {
@@ -70,7 +72,7 @@ public class MenuSystem : MonoBehaviour
             }
 
             GamePause.GamePaused = false;
-
+            playerHotbarUI.SetActive(true);
             
         }
     }
@@ -120,7 +122,7 @@ public class MenuSystem : MonoBehaviour
         {
             craftingMenuButtons[i].buttonValue = i;
             //Get sprite for crafting menu button (Corresponds to position in reference item array)
-
+            
         }
     }
 
@@ -158,4 +160,6 @@ public class MenuSystem : MonoBehaviour
         inventoryItemName.text = "";
         inventoryItemDescription.text = "";
     }
+
+    
 }
