@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CraftingMenu : MonoBehaviour
 {
     CraftedItem currentItem;
     bool canCraft;
     int currentIndex;
+    [SerializeField]
+    Image panelImage;
 
     public static CraftingMenu instance;
     void Start()
@@ -35,7 +38,7 @@ public class CraftingMenu : MonoBehaviour
         MenuSystem.instance.selectedCraftItem.text = currentItem.name;
         MenuSystem.instance.craftItemDescription.text = "";
         MenuSystem.instance.craftItemDur.text = "Durability: " + currentItem.durability;
-        //MenuSystem.instance.craftItemMaterials.text = currentItem.requiredMaterials[]
+        panelImage.sprite = currentItem.GetComponent<SpriteRenderer>().sprite;
         MenuSystem.instance.craftItemMaterials.text = "";
         for(int i = 0; i < currentItem.requiredMaterials.Length; i++)
         {

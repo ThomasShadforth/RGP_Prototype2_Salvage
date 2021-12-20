@@ -59,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - Crude Wood
+  - Crude Scrap
   - 
   - 
   - 
@@ -77,9 +78,19 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
-  itemNumbers: 0400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  itemHotbar: []
+  itemNumbers: 0400000003000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  itemHotbar:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  selectedItem: {fileID: 0}
   itemDatabase:
   - {fileID: 6789834080865988543, guid: c331ffa1c76d44d418c20e29936015d4, type: 3}
   - {fileID: 177517614116762776, guid: e3176172b15590b4b9645092d52b89af, type: 3}
@@ -96,11 +107,28 @@ MonoBehaviour:
   - Durable Plastic
   materialDescriptions:
   - A splinter of wood that is almost unusable, but can still be repurposed
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - A warped piece of scrap metal that can be used for shoddy equipment
+  - A discarded piece of plastic that seems like it can be used for something
+  - A slightly more useful piece of wood that can be used for stronger recipes, but
+    is still missing something
+  - A stronger piece of scrap metal that can be repurposed in a number of ways, but
+    lacks something that makes it exceptional
+  - A more desirable piece of plastic that has some more applications, but is still
+    missing that final touch
+  - A superior plank of wood used to craft stronger equipment. This is as good as
+    it gets
+  - A superior sheet of scrap metal used to forge stronger equipment. This is as
+    good as it gets.
+  - A superior chunk of plastic used to reinforce some projects. This is as good
+    as it gets
+  materialSprites:
+  - {fileID: 21300000, guid: 9fc96944d5c287844a186628547a308e, type: 3}
+  - {fileID: 21300000, guid: 57aed720aefe14e429d4627d386fc845, type: 3}
+  - {fileID: 21300000, guid: 07c24c8de62484749a8f1463e8a9ba11, type: 3}
+  - {fileID: 21300000, guid: 94ed6c48de90a184f803738ae9aab509, type: 3}
+  - {fileID: 21300000, guid: ef35f1f609307e5469e9bbd2dea827f7, type: 3}
+  - {fileID: 21300000, guid: 08680314f2ea4a04397e59e09682ac5e, type: 3}
+  - {fileID: 21300000, guid: ea2d76b1c5c394140b1191a691f2e620, type: 3}
+  - {fileID: 21300000, guid: 086efe53f0f6fa8498b963112b6cdce8, type: 3}
+  - {fileID: 21300000, guid: 083da83212df4014eb810cbce750de7b, type: 3}
+  currentItemIndex: 0

@@ -105,6 +105,7 @@ public class MenuSystem : MonoBehaviour
             if(GameManager.instance.itemManagerDB.items[i] != "")
             {
                 inventoryButtons[i].buttonImage.gameObject.SetActive(true);
+                inventoryButtons[i].buttonImage.sprite = GameManager.instance.itemManagerDB.getInventorySprite(GameManager.instance.itemManagerDB.items[i]);
                 //Get item details here via the itemManager (To get sprite)
                 inventoryButtons[i].itemAmount.text = GameManager.instance.itemManagerDB.itemNumbers[i].ToString();
             }
@@ -121,6 +122,7 @@ public class MenuSystem : MonoBehaviour
         for(int i = 0; i < craftingMenuButtons.Length; i++)
         {
             craftingMenuButtons[i].buttonValue = i;
+            craftingMenuButtons[i].buttonImage.sprite = GameManager.instance.itemManagerDB.getCraftedItemSprite(i);
             //Get sprite for crafting menu button (Corresponds to position in reference item array)
             
         }

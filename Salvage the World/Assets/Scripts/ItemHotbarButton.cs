@@ -55,6 +55,7 @@ public class ItemHotbarButton : MonoBehaviour
         if(GameManager.instance.itemManagerDB.itemHotbar[slotValue] != null)
         {
             hotbarImage.gameObject.SetActive(true);
+            hotbarImage.sprite = GameManager.instance.itemManagerDB.itemHotbar[slotValue].GetComponent<SpriteRenderer>().sprite;
             hotbarDurability.gameObject.SetActive(true);
             hotbarDurability.fillAmount = GameManager.instance.itemManagerDB.itemHotbar[slotValue].durability / GameManager.instance.itemManagerDB.itemHotbar[slotValue].maxDurability;
         }

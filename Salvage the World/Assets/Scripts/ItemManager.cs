@@ -22,6 +22,7 @@ public class ItemManager : MonoBehaviour
     public CraftedItem[] itemDatabase;
     public string[] materialDatabase;
     public string[] materialDescriptions;
+    public Sprite[] materialSprites;
 
     [Header("TEST: Mouse Scroll Val")]
     public int currentItemIndex;
@@ -205,5 +206,35 @@ public class ItemManager : MonoBehaviour
                 selectedItem = null;
             }
         }
+    }
+
+    public Sprite getInventorySprite(string materialName)
+    {
+        for(int i = 0; i < materialSprites.Length; i++)
+        {
+            if(materialSprites[i].name == materialName)
+            {
+                return materialSprites[i];
+                
+            }
+        }
+
+        return null;
+    }
+
+    public Sprite getCraftedItemSprite(int referenceIndex)
+    {
+        for(int i = 0; i < itemDatabase.Length; i++)
+        {
+            if(i == referenceIndex)
+            {
+                Debug.Log("FOUND ITEM");
+                return itemDatabase[i].GetComponent<SpriteRenderer>().sprite;
+            }
+        }
+
+
+        Debug.Log("COULDNT FIND");
+        return null;
     }
 }
