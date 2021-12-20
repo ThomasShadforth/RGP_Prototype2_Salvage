@@ -95,6 +95,12 @@ MonoBehaviour:
   - {fileID: 6789834080865988543, guid: c331ffa1c76d44d418c20e29936015d4, type: 3}
   - {fileID: 177517614116762776, guid: e3176172b15590b4b9645092d52b89af, type: 3}
   - {fileID: 1008994959063126267, guid: 1cfd482fb5926b041a565cf563c1938b, type: 3}
+  - {fileID: 4901697891715265415, guid: 1c02c256587fae048ab88b0169563d98, type: 3}
+  - {fileID: 1446651545031645915, guid: 7b5cab574e13ca648999773eedec4269, type: 3}
+  - {fileID: 1203869948927175326, guid: dea9ae639d3a86f41b7e9132d660776d, type: 3}
+  - {fileID: 6080092112264799694, guid: 436ef97b70fffee4f85605889dc7a0a6, type: 3}
+  - {fileID: 5874030672471360674, guid: 9b2e71e83e6acbd48a0e4bb263b693a8, type: 3}
+  - {fileID: 7717534896916587943, guid: 8bcda6daa0bbcaf4d88eb2e42712ae11, type: 3}
   materialDatabase:
   - Crude Wood
   - Crude Scrap
