@@ -11,6 +11,7 @@ public class MenuSystem : MonoBehaviour
     public GameObject craftingWindow, inventoryWindow;
     public GameObject[] menuWindows;
     public GameObject playerHotbarUI;
+    public GameObject healthBarUI;
 
     [Header("Button Arrays")]
     public InventoryButtons[] inventoryButtons;
@@ -24,6 +25,8 @@ public class MenuSystem : MonoBehaviour
     [Header("Inventory UI")]
     public Text inventoryItemName, inventoryItemDescription, inventoryButtonText;
     string activeItem;
+
+    public string tutorialPrompt;
     void Start()
     {
         if(instance != null)
@@ -61,6 +64,8 @@ public class MenuSystem : MonoBehaviour
             GamePause.GamePaused = true;
             menuWindows[0].SetActive(true);
             playerHotbarUI.SetActive(false);
+            healthBarUI.SetActive(false);
+
         }
         else
         {
@@ -73,6 +78,7 @@ public class MenuSystem : MonoBehaviour
 
             GamePause.GamePaused = false;
             playerHotbarUI.SetActive(true);
+            healthBarUI.SetActive(true);
             
         }
     }
@@ -161,6 +167,14 @@ public class MenuSystem : MonoBehaviour
     {
         inventoryItemName.text = "";
         inventoryItemDescription.text = "";
+    }
+
+    public void checkTutorialFlag(int tutorialIndex)
+    {
+        if (!GameManager.instance.tutorialManager.tutorialFlags[tutorialIndex])
+        {
+            GameManager.instance.tutorialManager.triggerTutorial(tutorialIndex, tutorialPrompt);
+        }
     }
 
     

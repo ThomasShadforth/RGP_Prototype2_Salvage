@@ -21,11 +21,22 @@ public class EnemyBase : MonoBehaviour
 
     public float moveSpeed;
 
+    public Transform[] patrolArray;
+    public Transform currentPatrolPoint;
+
+    public float minimumDistance;
+    public int patrolIndex;
+
+    public int damageVal;
     void Start()
     {
         playerTarget = FindObjectOfType<PlayerBase>().transform;
         rb = GetComponent<Rigidbody2D>();
         defaultState = enemyFSM;
+        if (patrolArray != null)
+        {
+            currentPatrolPoint = patrolArray[patrolIndex];
+        }
     }
 
     // Update is called once per frame
@@ -46,10 +57,50 @@ public class EnemyBase : MonoBehaviour
         {
             enemyFSM = defaultState;
         }
+
+        if(enemyFSM == enemyStates.walk)
+        {
+            checkPatrol();
+        }
+
+        if(enemyFSM == enemyStates.chase)
+        {
+            checkChase();
+        }
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, chaseRadius);
+    }
+
+    public void checkChase()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, playerTarget.position, moveSpeed * GamePause.deltaTime);
+    }
+
+    public void checkPatrol()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, currentPatrolPoint.position, moveSpeed * GamePause.deltaTime);
+
+        if(Vector3.Distance(transform.position, currentPatrolPoint.position) < minimumDistance)
+        {
+            Debug.Log("REACHED!");
+            patrolIndex++;
+            if(patrolIndex > patrolArray.Length - 1)
+            {
+                patrolIndex = 0;
+            }
+
+            currentPatrolPoint = patrolArray[patrolIndex];
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.GetComponent<PlayerBase>())
+        {
+            PlayerBase.instance.damagePlayer(damageVal);
+        }
     }
 }

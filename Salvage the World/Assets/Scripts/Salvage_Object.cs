@@ -17,9 +17,26 @@ public class Salvage_Object : MonoBehaviour
     public Text timerText;
     public Image timerBar;
 
+    public bool doesTriggerTutorial;
+    public int tutorialTriggerIndex;
+    public string tutorialPrompt;
+
+    public Sprite[] salvageSprites;
+
     void Start()
     {
         timer = timerVal;
+
+        if (materialType.Contains("Wood"))
+        {
+            GetComponent<SpriteRenderer>().sprite = salvageSprites[0];
+        } else if (materialType.Contains("Scrap"))
+        {
+            GetComponent<SpriteRenderer>().sprite = salvageSprites[1];
+        } else if (materialType.Contains("Plastic"))
+        {
+            GetComponent<SpriteRenderer>().sprite = salvageSprites[2];
+        }
     }
 
     // Update is called once per frame
@@ -50,6 +67,10 @@ public class Salvage_Object : MonoBehaviour
     {
         
         GameManager.instance.itemManagerDB.addItem(materialType, materialYield);
+        if (doesTriggerTutorial)
+        {
+            checkTutorial();
+        }
     }
 
     public void resetTimer()
@@ -87,6 +108,14 @@ public class Salvage_Object : MonoBehaviour
         else
         {
             timerBar.gameObject.SetActive(false);
+        }
+    }
+
+    public void checkTutorial()
+    {
+        if (!GameManager.instance.tutorialManager.tutorialFlags[tutorialTriggerIndex])
+        {
+            GameManager.instance.tutorialManager.triggerTutorial(tutorialTriggerIndex, tutorialPrompt);
         }
     }
 }

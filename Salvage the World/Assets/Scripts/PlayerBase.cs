@@ -22,8 +22,7 @@ public class PlayerBase : MonoBehaviour
 
     [Header("Player Properties")]
     public int playerMaxHealth;
-    [SerializeField]
-    int playerHealth;
+    public int playerHealth;
     public float staminaMax;
     [SerializeField]
     float playerStamina;
@@ -34,6 +33,8 @@ public class PlayerBase : MonoBehaviour
     public Obstacle obstacleInRange;
 
     public string areaTransitionName;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +53,7 @@ public class PlayerBase : MonoBehaviour
         speedMult = walkSpeedMult;
         playerStamina = staminaMax;
         moveInput = Vector3.zero;
+        playerHealth = playerMaxHealth;
     }
     
     void FixedUpdate()
@@ -190,6 +192,16 @@ public class PlayerBase : MonoBehaviour
             {
                 Debug.Log("You can't break this with your bare hands! You need to craft a tool!");
             }
+        }
+    }
+
+    public void damagePlayer(int damageVal)
+    {
+        playerHealth -= damageVal;
+
+        if(playerHealth <= 0)
+        {
+            GameManager.instance.triggerGameOver();
         }
     }
 }

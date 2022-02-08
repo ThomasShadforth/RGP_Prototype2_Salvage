@@ -157,6 +157,13 @@ MonoBehaviour:
   timerVal: 10
   timerText: {fileID: 0}
   timerBar: {fileID: 6436772379711749335}
+  doesTriggerTutorial: 0
+  tutorialTriggerIndex: 0
+  tutorialPrompt: 
+  salvageSprites:
+  - {fileID: 21300000, guid: 223420fd7f74d554b80b46c1a7af29bf, type: 3}
+  - {fileID: 21300000, guid: 9ea551e5d40e79c4181f4507960eeaaa, type: 3}
+  - {fileID: 21300000, guid: 9b49be5c05909c64688459902102555c, type: 3}
 --- !u!1 &5235957653925393368
 GameObject:
   m_ObjectHideFlags: 0

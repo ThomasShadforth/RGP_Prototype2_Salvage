@@ -51,9 +51,9 @@ MonoBehaviour:
   isAxe: 0
   isPickaxe: 1
   isShovel: 0
-  maxDurability: 10
-  durability: 0
-  efficiency: 1
+  maxDurability: 20
+  durability: 20
+  efficiency: 3
   requiredMaterials:
   - RequiredMaterialName: Crude Wood
     RequiredMaterialNumber: 3

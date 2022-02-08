@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AreaEntrance : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class AreaEntrance : MonoBehaviour
         {
             
             PlayerBase.instance.transform.position = transform.position;
+            GameManager.instance.currentLevel = SceneManager.GetActiveScene().buildIndex;
+            GameManager.instance.setAreaPos(transform.position);
         }
     }
 
